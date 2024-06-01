@@ -1,10 +1,9 @@
 import { Sequelize } from "sequelize";
 import SigninModel from "../model/model.js";
-const sequelize = new Sequelize('msql', 'postgres', 'postgressql', {
-    host: '192.168.56.1',
-    port:5432,
-    dialect:'postgres'
-  });
+import dotenv from 'dotenv';
+dotenv.config();
+const databaseUrl = process.env.DATABASE_URL;
+const sequelize = new Sequelize(databaseUrl);
   let Signin=null;
 const ConnectDb=async()=>{
     try {
