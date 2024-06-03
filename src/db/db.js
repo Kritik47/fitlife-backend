@@ -1,13 +1,17 @@
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import dotenv from 'dotenv'
+import { EmployeeModel } from '../models/model.js';
 dotenv.config();
-const connectDb = async () => {
-    try {
-        await mongoose.connect(process.env.DATABASE_URL);
-        console.log("MongoDB Connected...");
-    } catch (e) {
-        console.error("Error connecting to MongoDB:", e);
+import { Sequelize } from "sequelize";
+const sequelize=new Sequelize(process.env.DATABASE_URL);
+let Employee=null;
+const ConnectDb=async()=>{
+    try{
+        await sequelize.authenticate();
+        console.log("Postgres Connected......");
+        Employee=await EmployeeModel(sequelize);
+        await sequelize.sync();
+    }catch(e){
+        console.error("Connection Erro.....");
     }
 }
-
-export default connectDb;
+export {ConnectDb,Employee};
