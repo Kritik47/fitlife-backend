@@ -1,12 +1,21 @@
-
 import express from 'express';
-const app=express();
+import cors from 'cors';
 import dotenv from 'dotenv';
+import { ConnectDb } from './src/fitlife/db/db.js';
+import router from './src/fitlife/routers/router.js';
+
 dotenv.config();
-import { ConnectDb } from './src/db/db.js';
-ConnectDb();
-import router from './src/routes/route.js';
+
+const app = express();
+
+// Enable CORS
+app.use(cors());
+
+// Use your router
 app.use(router);
-app.listen(process.env.PORT||3000,()=>{
-    console.log(`listen in port ${process.env.PORT}`);
-})
+
+ConnectDb();
+
+app.listen(process.env.PORT, () => {
+    console.log(`Listening on port ${process.env.PORT}`);
+});
