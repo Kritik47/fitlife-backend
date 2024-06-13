@@ -3,12 +3,7 @@ import SignupModel from '../models/SignupModel.js';
 import ContactModel from '../models/ContactModels.js';
 import dotenv from 'dotenv'
 dotenv.config();
-//const sequelize=new Sequelize(process.env.DATABASE_URL);
-const sequelize = new Sequelize('FITLIFE', 'postgres', 'postgressql', {
-    host: '192.168.56.1',
-    dialect:'postgres'
-  });
-    
+const sequelize=new Sequelize(process.env.DATABASE_URL);  
 let Signup=null;
 let Contact=null;
 const ConnectDb=async()=>{
