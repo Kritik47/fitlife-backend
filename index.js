@@ -1,11 +1,17 @@
 import express from 'express';
-import cors from 'cors'
-const app=express();
-import ConncetDb from './src/mongocrud/db/db.js';
-import router from './src/mongocrud/router/router.js';
-ConncetDb();
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { ConnectDb } from './src/fitlife/db/db.js';
+import router from './src/fitlife/routers/router.js';
+
+dotenv.config();
+const app = express();
+
 app.use(cors());
+app.use(express.json());
 app.use(router);
-app.listen(5000,()=>{
-  console.log("Listen In pOrt 5100");
-})
+ConnectDb();
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
