@@ -1,26 +1,26 @@
 import { DataTypes } from "sequelize";
-const SignupModel = (sequelize) => {
-    const Signup = sequelize.define("Signup", {
+const AddchestModel = (sequelize) => {
+    const Addchest = sequelize.define("Addchest", {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
             allowNull: false,
         },
-        name: {
+        exercise: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        email: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        password: {
+        referenceLink: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
+        }
     });
-    return Signup;
+    return Addchest;
 };
 
-export default SignupModel;
+export default AddchestModel;
