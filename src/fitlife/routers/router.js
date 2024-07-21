@@ -1,0 +1,16 @@
+import express from 'express';
+import CreateContact from '../controller/Contact.js';
+import { PostJoinTrainer,GetJoinTrainer,GetByIdJoinTrainer,PutByIdJoinTrainer,DelByIdJoinTrainer } from '../controller/JoinTrainer.js';
+import { CreateAddchest ,GetAddchest} from '../controller/Addchest.js';
+import StripePayment from '../controller/StripPayment.js';
+const router = express.Router();
+router.post('/fitlife/contact', CreateContact);
+router.post('/fitlife/JoinTrainer',PostJoinTrainer);
+router.get('/fitlife/JoinTrainer',GetJoinTrainer);
+router.get('/fitlife/JoinTrainer/:id',GetByIdJoinTrainer);
+router.put('/fitlife/JoinTrainer/:id',PutByIdJoinTrainer);
+router.delete('/fitlife/JoinTrainer/:id',DelByIdJoinTrainer);
+router.post('/fitlife/Addchest',CreateAddchest);
+router.get('/fitlife/Addchest',GetAddchest);
+router.post('/fitlife/stripepay',StripePayment);
+export default router;
