@@ -1,17 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { ConnectDb } from './src/fitlife/db/db.js';
-import router from './src/fitlife/routers/router.js';
-
-dotenv.config();
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use(router);
+const express=require('express');
+const app=express();
+const ConnectDb=require('./src/MYPORTFOLIO/lib/db');
 ConnectDb();
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const cors=require('cors');
+app.use(cors());
+const router=require('./src/MYPORTFOLIO/router/router');
+app.use(router);
+app.listen(5000,()=>{
+    console.log("I am listen in 5000...");
+})
