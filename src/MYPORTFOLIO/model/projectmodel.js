@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ProjectSchema = new mongoose.Schema({
     title: {
@@ -13,8 +13,8 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-}, { timestamps: true }); 
+}, { timestamps: true });
 
 const Project = mongoose.model('Project', ProjectSchema);
 
-module.exports = Project;
+export default Project;

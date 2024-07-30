@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const SkillSchema = new mongoose.Schema({
     skillname: {
@@ -9,8 +9,8 @@ const SkillSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-}, { timestamps: true }); 
+}, { timestamps: true });
 
 const Skill = mongoose.model('Skill', SkillSchema);
 
-module.exports = Skill;
+export default Skill;
