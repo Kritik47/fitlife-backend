@@ -1,14 +1,18 @@
 import express from 'express';
-import ConnectDb from './src/MYPORTFOLIO/lib/db.js'; // Ensure the path and extension are correct
 import cors from 'cors';
-import router from './src/MYPORTFOLIO/router/router.js'; // Ensure the path and extension are correct
-
+import dotenv from 'dotenv'
+import { ConnectDb } from './src/fitlife/db/db.js';
+import router from './src/fitlife/routers/router.js';
+dotenv.config();
 const app = express();
+// Connect to the database
 ConnectDb();
 
+// Middleware
 app.use(cors());
 app.use(router);
 
-app.listen(5000, () => {
-    console.log("I am listening on port 5000...");
+// Start the server
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
 });
